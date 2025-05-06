@@ -6,6 +6,7 @@ from networksecurity.logging.logger import logging
 from networksecurity.entity.config_entity import DataIngestionConfig,DataValidationConfig,DataTransformationConfig
 from networksecurity.entity.config_entity import TrainingPipelineConfig
 from networksecurity.utils.main_utils.utils import read_yaml_file,write_yaml_file
+import sys
 if __name__=="__main__":
     try:
         trainingpipelineconfig=TrainingPipelineConfig()

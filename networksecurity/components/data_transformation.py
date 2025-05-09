@@ -18,11 +18,11 @@ from networksecurity.exception.exception import NetworkSecurityException
 from networksecurity.logging.logger import logging
 
 
-class DataTransformation:
+class DataTransformation:   
     def __init__(self,data_validation_Artifact:DataValidationArtifact,
                 data_transformation_config:DataTransformationConfig):
         try:
-            self.data_validation_artifact=DataValidationArtifact=data_validation_Artifact
+            self.data_validation_artifact:DataValidationArtifact=data_validation_Artifact
             self.data_transformation_config:DataTransformationConfig=data_transformation_config
 
         except Exception as e:
@@ -33,7 +33,7 @@ class DataTransformation:
             return pd.read_csv(file_path)
         except Exception as e:
             raise NetworkSecurityException(e, sys)
-    def get_data_transformer_object(cls)->Pipeline:
+    def get_data_transformer_object(self)->Pipeline:
         """
         
         """
@@ -76,8 +76,10 @@ class DataTransformation:
             ##save numpy array data
             save_numpy_array_data(self.data_transformation_config.transformed_train_file_path,array=train_arr,)
             save_numpy_array_data(self.data_transformation_config.transformed_test_file_path,array=test_arr,)
-            save_numpy_array_data(self.data_transformation_config.transformed_object_file_path,preprocessor_object,)
+            save_object(self.data_transformation_config.transformed_object_file_path, preprocessor_object)
 
+
+            save_object("final_model/preprocessor.pkl",preprocessor_object,)
             ##preparing artifact
             data_transformation_artifact=DataTransformationArtifact(
                 transformed_object_file_path=self.data_transformation_config.transformed_object_file_path,

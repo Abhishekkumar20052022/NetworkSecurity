@@ -11,7 +11,7 @@ from networksecurity.utils.main_utils.utils import read_yaml_file, write_yaml_fi
 
 class DataValidation:
     def __init__(self, data_ingestion_artifact: DataIngestionArtifact,
-                 data_validation_config: DataValidationConfig):
+                data_validation_config: DataValidationConfig):
         try:
             self.data_ingestion_artifact = data_ingestion_artifact
             self.data_validation_config = data_validation_config
